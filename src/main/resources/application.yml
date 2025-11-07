@@ -1,0 +1,54 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecom_db
+    username: postgres
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+application:
+  security:
+    jwt:
+      secret: bbae636dc43c32300d23d8eaf9daf5419ca57870837410a4b0299c21c63ddab5
+      expiration: 86400000 # 1 day in milliseconds
+  file-storage:
+    upload-dir: uploads
+  imgbb:
+    api-key: a39b374aeb31a61cbc079bef0e6daf80
+    upload-url: https://api.imgbb.com/1/upload
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+    allowed-methods:
+      - GET
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+      - OPTIONS
+    allowed-headers:
+      - Authorization
+      - Content-Type
+      - Accept
+      - X-Requested-With
+    exposed-headers:
+      - Authorization
+    allow-credentials: true
+    max-age: 3600
+
+logging:
+  level:
+    org.springframework: INFO
+
