@@ -43,6 +43,9 @@ public class Order {
     @Builder.Default
     private List<OrderItem> items = new ArrayList<>();
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Payment payment;
+
     @PrePersist
     public void prePersist() {
         if (placedAt == null) {
